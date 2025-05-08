@@ -8,3 +8,12 @@
     <p>LFG! WAGMI! ye</p>
   </body>
 </html>
+
+
+
+---
+layout: home
+title: What up mfers
+---
+
+Sup mferz! WAGMI! LFG!
