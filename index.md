@@ -1,6 +1,6 @@
 ---
 layout: home
-title: What up mfers
+title: Welcome to Alan's Blog
 ---
 
-Sup mferz! WAGMI! LFG!
+Welcome to my site! Check out my latest posts below.
