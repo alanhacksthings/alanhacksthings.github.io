@@ -16,3 +16,11 @@ header_pages:
   - htb-walkthroughs/index.md
   - blogs/index.md
   - learn/index.md
+
+# Add this line
+include:
+  - assets/css/custom.css
+
+# And if needed:
+sass:
+  style: compressed
