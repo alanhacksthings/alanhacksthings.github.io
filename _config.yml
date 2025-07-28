@@ -1,3 +1,18 @@
 remote_theme: pages-themes/hacker
 title: Alan's Blog
 description: hackin
+
+# Navigation Links
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: default
+
+# Add navigation bar links
+header_pages:
+  - index.md
+  - htb-walkthroughs/index.md
+  - blogs/index.md
+  - learn/index.md
