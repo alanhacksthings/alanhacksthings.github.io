@@ -1,5 +1,6 @@
-.github-button,
 .github-button-wrapper,
-.btn-github {
+#github-link,
+.btn-github,
+a[href*="github.com"] {
   display: none !important;
 }
