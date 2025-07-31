@@ -1,3 +1,5 @@
-.github-button-wrapper {
+.github-button,
+.github-button-wrapper,
+.btn-github {
   display: none !important;
 }
