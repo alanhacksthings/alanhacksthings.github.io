@@ -1,6 +1,6 @@
 ---
 layout: default
-title: From Bash-Illiterate to Pentester: Passing the OSCP in 18 Months
+title: "From Bash-Illiterate to Pentester: Passing the OSCP in 18 Months"
 ---
 
 # From Bash-Illiterate to Pentester: Passing the OSCP in 18 Months
