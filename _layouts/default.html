@@ -1,26 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ page.title }} | {{ site.title }}</title>
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
     <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
   </head>
+
   <body>
-    <header>
+    <header class="header">
       <div class="container">
-        <!-- Site Title -->
-        <div class="site-title">
-          <a href="/" class="site-title-link">{{ site.title }}</a>
-        </div>
 
-        <!-- Optional Tagline -->
-        {% if site.description %}
-          <p class="site-tagline">{{ site.description }}</p>
-        {% endif %}
+        <!-- This renders the default Hacker-style title and subtitle -->
+        <h1 class="project-name">{{ site.title }}</h1>
+        <h2 class="project-tagline">{{ site.description }}</h2>
 
-        <!-- Navbar -->
+        <!-- Just add the navbar below it -->
         <nav class="navbar">
           <a href="/">Home</a>
           <a href="/about.md">About</a>
@@ -28,10 +25,11 @@
           <a href="/blog/">Blog</a>
           <a href="/learn/">Learn</a>
         </nav>
+
       </div>
     </header>
 
-    <main class="container">
+    <main id="content" class="main-content container">
       {{ content }}
     </main>
   </body>
