@@ -21,3 +21,19 @@ a.btn.btn-github,
 .navbar a:hover {
   text-decoration: underline;
 }
+
+.site-title {
+  padding: 10px 20px 0;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.site-title-link {
+  color: #77ff77;
+  text-decoration: none;
+  font-family: monospace;
+}
+
+.site-title-link:hover {
+  text-decoration: underline;
+}
