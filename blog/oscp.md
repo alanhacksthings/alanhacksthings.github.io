@@ -1,0 +1,141 @@
+---
+layout: default
+title: From Bash-Illiterate to Pentester: Passing the OSCP in 18 Months
+---
+
+# From Bash-Illiterate to Pentester: Passing the OSCP in 18 Months
+
+The year is 2023, and I’m having an overdue catchup with my highschool buddy who works in cybersecurity. After facing the harsh reality that COVID forced on so many of my fellow musicians, I was still searching for a career that offered both financial and intellectual sustainability. While orchestra conducting certainly satisfied the latter, it unfortunately fell short of the former.
+
+Fast forward one and a half years later and…I passed the OSCP!
+
+So how did I go from having no clue what bash was, to passing one of the most revered tests in Penetration Testing? Let’s dive in.
+
+## Path:
+
+This was the overall roadmap I followed:
+- Build a router  
+- Set up an apache web server  
+- Study the OWASP Top Ten Vulnerability Types  
+- Rebuild CVEs that involve open source, vulnerable applications  
+- Complete the HTB CPTS Course  
+- Complete three retired HTB Boxes  
+- Complete the PEN-200 Course  
+- Complete the OffSec Challenge Labs  
+
+We’ll zoom in on each of these steps below. However, I want to make a few points clear first:
+
+### Having a committed mentor is paramount to success
+
+There is no way I would have been able to get this far without my friend/mentor. He has years of experience and was graciously willing to spend exorbitant amounts of time helping me. Even if you have a roadmap to work with, someone to help guide you is absolutely necessary for the inevitable bumps in the road
+
+### Treat it like a full-time job
+
+I was fortunate enough to be living in Japan while on this journey. Since I’m American (USD-earning) and had a bit of savings, I was able to spend most of my time studying. I realize that this isn’t feasible for many, hence why I bring up time management as a possible obstacle.
+
+### Mindset = Key
+
+This was one of the hardest things I’ve ever done in my life. As such, the mental trials and tribulations were constant. While my mentor, friends and family were of course helpful in staying the course, the hardest of times required a steadfast mentality.
+
+Put simply: No matter how impossible the end goal might feel, it can be reached with enough grit and perseverance!
+
+Expanding on this a bit more: Cybersecurity is such a sprawling field. The skills required aren’t necessarily as straightforward as other paths one might pursue within the vast field of computer science.  
+When diving into penetration testing, this quality makes the journey that much more intimidating.
+
+However, all paths lead to one inevitable question: what do I control? And from there: can I write, read, and/or execute?
+
+If you can keep this at the center of your journey, then you’ll be that much closer to learning the hacker’s mindset and finding success.
+
+Ok, now for the fun stuff…
+
+## Build a router:
+
+Understanding IP addresses and all-things-routing is essential for pentesting. Whether you’re traversing an Active Directory domain via a pivot machine (shoutout to ligolo) or simply having trouble getting a reverse shell due to some pesky firewall rule, a fastidious approach to routing is essential.
+
+So where should you start?
+
+In my case, I took an old computer with two network interfaces, wiped it, and installed a headless version of Ubuntu on it. From there, I set up an internal network with custom, private IP addresses assigned to two other computers (DHCP off). Finally, I set up port forwarding with iptables (currently called nftables on newer Debian-based distros).
+
+Working with iptables can be quite cumbersome, but I highly suggest taking the time to do so. Many rely on ufw (Uncomplicated Firewall), which is an abstraction of iptables. While ufw makes things quite…uncomplicated, dealing with iptables directly teaches you how the plumbing of IP addresses/ports work. This sort of experience really can’t be replicated without engaging with it directly.
+
+## Set up an Apache web server:
+
+As pentesters, we spend a lot of time searching for ways to gain footholds via vulnerable web servers. Therefore, it’s essential for us to understand how they work from the inside.
+
+I ended up using Apache as my testing grounds (nginx is perfectly viable as well). I set up two separate web pages via two different configurations:  
+The first one involved one configuration file with the two separate pages in /var/www/html  
+The second used two separate configuration files, harnessing two different ports instead of just one  
+You can take this much further if you’d like; however, I’d say that the main point is to understand the overlying methods by which web servers serve their material (ie one configuration file:multiple ports, multiple configuration files:multiple ports, one configuration file:one port, etc)
+
+## Study the OWASP Top Ten Vulnerability Types:
+
+OWASP (The Open Worldwide Application Security Project) is a nonprofit foundation dedicated to improving software security via a number of initiatives. One of these includes publishing a list of the most critical security risks via web applications every couple of years or so.  
+This is arguably the best place to start when learning about vulnerability types. Of course, there are so many different classifications of bugs within the OWASP Top Ten, so it’s best to treat this as a jumping off point.
+
+I highly recommend taking a look at the Portswigger labs for subsets of vulnerabilities as well. They do a great job of giving practical examples and exercises so you can get a feel for each one.
+
+## Rebuild CVEs that involve OS, vulnerable applications:
+
+Now that we have some familiarity with the OWASP Top Ten, it’s time to get our hands dirty and start building some!
+
+The goal here is to take real world examples of the most common vulnerability types so we can get a foundational understanding of how each one works. One of the best places to look for open source CVEs is exploit-db.com (Google works as well, but I found it best to start with Exploit DB). From there, we can rebuild these vulnerable apps, exploit them, and learn how to fix them.
+
+As someone who entered this space with no prior bash/Linux experience, I will say that this was probably *the most important part* of my journey. Building these apps taught me how computers/web apps work from a foundational level. The learning curve was quite steep, but it essentially acted as a crash course in most of the basics.
+
+It’s also important to stress how important having a mentor is for this part. Between choosing each CVE, inevitably running into various hurdles in recreating them, and working through each vulnerability type, a mentor is absolutely indispensable.
+
+Here’s a list of vulnerability types that I found CVEs for and rebuilt:  
+Injection  
+XSS  
+SQL  
+Command  
+Template  
+XML  
+IDOR  
+LFI  
+RFI  
+SSRF  
+
+## Complete the HTB CPTS Course:
+
+Armed with a more-than-surface-level understanding of bugs, we’re now ready for the Hack The Box CPTS course. My intent wasn’t to take the actual exam (although I may do so in the future), but to learn about the actual process of penetration testing.
+
+This course was great for teaching the basics and a bit more, especially when it came to Active Directory attack vectors. From a material-standpoint, it’s fantastic (not so much from a proper-English-standpoint at times). This is because it doesn’t just give you rote instructions on how to pentest; it fleshes out all sorts of aspects of the job via experiential references, proper mindsets, and much more.
+
+## Complete three retired HTB Boxes:
+
+Before being allowed to move onto the PEN-200 course (the prerequisite course for the OSPC), I was required to complete two easy boxes and one medium without assistance from walkthroughs.
+
+This part is quite self-explanatory, but the only thing I’ll expand on is the “grading system” for HTB. Sometimes, easy boxes can feel like mediums and mediums can feel like easy’s. Hence, my mentor told me not to get discouraged if I couldn’t complete a medium (especially since some can feel like hard boxes!). He said as long as I could finish any medium one by myself, I’d be in a good place to move forward.
+
+## Complete the PEN-200 Course and Proving Grounds:
+
+By this point, I had enough knowledge so that the PEN-200 course was about half review for me. However, while lots of the techniques were familiar, OffSec boxes had a different flavor than HTB ones. Therefore, I suggest going through most of the course in order to get a better feel for OffSec’s mindset.
+
+While doing so, I was also completing boxes from the Proving Grounds, which has a ton to choose from (well over 100, I believe). I would say that it’s best to complete at least 30-50 of these, depending on how you do without the walkthroughs.
+
+While we’re on the subject of them: walkthroughs can be very tempting to use as a crutch. However, I found that I relied too much on them (which is one of the reasons I didn’t pass my first attempt). It is absolutely essential to learn the process of finding the bugs, not just exploiting them. In fact, I would say that exploiting them is generally the easy part; finding them is usually much more time consuming and frustrating!
+
+## Complete the OffSec Challenge Labs:
+
+The final step is completing the Challenge Labs. These can be pretty intense, as they sometimes involve up to ten servers within one challenge (both Windows/Active Directory and Linux). However, I can’t stress how important it is to thoroughly understand each exploit and how you found them.
+
+Before my second attempt of the OSCP, I wrote each step down for all of the Challenge Labs (aside from Skylark, Zeus, Poseidon, Feast, and Laser, which are all meant as preparation for the PEN-300 course). While I didn’t reference these notes much during the test, writing them down was extremely helpful for internalizing the attack paths/bugs encountered.
+
+This brings me to another important point: TAKE GOOD NOTES! Seriously, your notes are your lifeline during the test. While all of the information is only a Google search away, there is no replacement for being organized. I would say that reorganizing my notes for my second attempt also made a difference in my mentality during the test.
+
+## Taking the OSCP:
+
+As referenced, I had to take the test twice before passing. The first time, I was beyond stressed. Most of my energy went towards calming down and breathing normally. However, during my second attempt, I knew what to expect and was able to overcome these mental challenges successfully.
+
+The other essential aspect of passing was not letting myself give up. I know, that sounds obvious; but when you’re in the thick of it, it’s easy to feel hopeless…but don’t let that stop you! Keep looking for details you missed.
+
+Remember, focus on the important parts of hacking: what do I control? Can I write, read, and/or execute? If you keep these questions at the center of your process, it doesn’t matter what you run into: you’ll be able to figure it out!
+
+Lastly, the most comforting part of the test is knowing that bugs do in fact exist for each box. My mentor would stress this aspect a lot, because in the real world, one has no clue whether or not a vulnerability exists during a penetration test. As a result, you can rest assured that your effort is not in vain. You can and will find the bugs if you put enough effort and thought into it!
+
+## Finally Thoughts:
+
+Yes, this is an extremely challenging path…but none of it is rocket science. With enough time, dedication and practice, you too can get yourself the necessary skills to pass the OSCP and open the door to a whole new career.
+
+Best of luck, wherever your journey brings you!
