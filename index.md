@@ -12,3 +12,4 @@ My name is Alan, I'm an Orchestra Conductor-turned-Penetration Tester. I started
 The best part? There simply is no end to the madness. Some call it a bug; I call it a feature.
 ---
 それに、日本語を喋るな人です！いつ連取のチャンスを探しています。
+---
