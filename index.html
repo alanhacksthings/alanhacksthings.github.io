@@ -1,0 +1,57 @@
+---
+layout: default
+title: Home
+---
+<section class="hero">
+<div class="type">$ echo "welcome"</div>
+<h1>Greetings, one and all!</h1>
+<p class="lead">I'm Alan — an orchestra-conductor-turned-penetration tester. I document practical security research, WAF experiments, hands-on HTB write-ups, and notes you can actually use.</p>
+<div class="btns">
+<a class="btn primary" href="{{ '/blog/' | relative_url }}">Browse latest posts</a>
+<a class="btn" href="{{ '/walkthroughs/' | relative_url }}">Featured walkthroughs</a>
+</div>
+</section>
+
+
+<section>
+<div class="sec-head"><h2>Latest posts</h2><a class="btn" href="{{ '/blog/' | relative_url }}">See all →</a></div>
+<div class="grid">
+{% if site.posts and site.posts.size > 0 %}
+{% for post in site.posts limit:4 %}
+<article class="card span-6">
+<h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+<div class="meta">{{ post.date | date: "%b %d, %Y" }}</div>
+<p class="excerpt">{{ post.excerpt | strip_html | truncate: 140 }}</p>
+</article>
+{% endfor %}
+{% else %}
+<div class="card">No posts yet — stay tuned for deep dives and write-ups.</div>
+{% endif %}
+</div>
+</section>
+
+
+<section>
+<h2>Featured walkthrough</h2>
+{% assign w_posts = site.posts | where_exp: "p", "p.tags contains 'walkthrough'" %}
+{% if w_posts and w_posts.size > 0 %}
+{% assign feat = w_posts | sort: 'date' | last %}
+<article class="card">
+<h3><a href="{{ feat.url | relative_url }}">{{ feat.title }}</a></h3>
+<div class="meta">{{ feat.date | date: "%b %d, %Y" }} • Walkthrough</div>
+<p class="excerpt">{{ feat.excerpt | strip_html | truncate: 220 }}</p>
+</article>
+{% else %}
+<div class="card">Tag any post with <code>walkthrough</code> to spotlight it here.</div>
+{% endif %}
+</section>
+
+
+<section>
+<h2>Resources</h2>
+<div class="grid">
+<a class="card span-4" href="{{ '/learn/#waf-notes' | relative_url }}"><h3>WAF notes</h3><p class="excerpt">Testing and bypass experiments on Azure WAF, Cloudflare, and ModSecurity.</p></a>
+<a class="card span-4" href="{{ '/learn/#cheatsheets' | relative_url }}"><h3>Cheat sheets</h3><p class="excerpt">One-liners, payloads, and command breakdowns I actually use.</p></a>
+<a class="card span-4" href="{{ '/learn/#tools' | relative_url }}"><h3>Tools & PoCs</h3><p class="excerpt">Small utilities, PoCs, and scripts from blog posts.</p></a>
+</div>
+</section>
