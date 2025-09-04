@@ -1,0 +1,19 @@
+<header class="site-head">
+<div class="wrap">
+<div class="brand">
+<div class="brand-title">./ AlanHacks</div>
+<div class="brand-sub">adventures in hacking (and sometimes sushi)</div>
+</div>
+{% assign u = page.url %}
+{% assign is_blog = page.layout == 'post' or u contains '/blog/' %}
+<nav aria-label="Primary">
+<div class="nav">
+<a href="{{ '/' | relative_url }}"{% if u == '/' %} aria-current="page"{% endif %}>Home</a>
+<a href="{{ '/about/' | relative_url }}"{% if u contains '/about/' %} aria-current="page"{% endif %}>About</a>
+<a href="{{ '/walkthroughs/' | relative_url }}"{% if u contains '/walkthroughs/' %} aria-current="page"{% endif %}>Walkthroughs</a>
+<a href="{{ '/blog/' | relative_url }}"{% if is_blog %} aria-current="page"{% endif %}>Blog</a>
+<a href="{{ '/learn/' | relative_url }}"{% if u contains '/learn/' %} aria-current="page"{% endif %}>Learn</a>
+</div>
+</nav>
+</div>
+</header>
