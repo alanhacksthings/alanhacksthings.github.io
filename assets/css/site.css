@@ -97,6 +97,12 @@ pre code{font-family:"Fira Code",monospace; font-size:14.5px}
 }
 .highlight td.code{padding-left:12px}
 
+/* Blinking cursor */
+.cursor{ display:inline-block; width:10px; height:1.2em; vertical-align:-.2em;
+         background:var(--accent); animation:blink 1s steps(1,end) infinite;
+         border-radius:2px; margin-left:6px; }
+@keyframes blink { 50% { opacity:0; } }
+
 /* Copy button */
 pre.has-copy .copy-btn{
   position:absolute; top:8px; right:8px;
