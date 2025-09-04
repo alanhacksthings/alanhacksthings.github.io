@@ -25,5 +25,29 @@ layout: null
 {{ content }}
 </main>
 {% include footer.html %}
+<!-- Copy-to-clipboard for code blocks -->
+<script>
+(function(){
+  const blocks = document.querySelectorAll('pre.highlight, div.highlight pre, pre > code');
+  blocks.forEach((node)=>{
+    const pre = node.tagName.toLowerCase()==='pre' ? node : node.closest('pre');
+    if(!pre || pre.classList.contains('has-copy')) return;
+    pre.classList.add('has-copy');
+    const btn = document.createElement('button');
+    btn.className='copy-btn'; btn.type='button'; btn.textContent='Copy';
+    btn.addEventListener('click', async ()=>{
+      const codeEl = pre.querySelector('code') || node;
+      try {
+        await navigator.clipboard.writeText(codeEl.innerText);
+        btn.textContent='Copied!'; setTimeout(()=>btn.textContent='Copy',1200);
+      } catch(e){
+        btn.textContent='Error'; setTimeout(()=>btn.textContent='Copy',1200);
+      }
+    });
+    pre.appendChild(btn);
+  });
+})();
+</script>
+
 </body>
 </html>
