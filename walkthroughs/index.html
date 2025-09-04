@@ -1,0 +1,19 @@
+---
+layout: default
+title: Walkthroughs
+---
+<h1>Walkthroughs</h1>
+{% assign w_posts = site.posts | where_exp: "p", "p.tags contains 'walkthrough'" %}
+{% if w_posts and w_posts.size > 0 %}
+<div class="grid">
+{% for post in w_posts reversed %}
+<article class="card span-12">
+<h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+<div class="meta">{{ post.date | date: "%b %d, %Y" }}</div>
+<p class="excerpt">{{ post.excerpt | strip_html | truncate: 200 }}</p>
+</article>
+{% endfor %}
+</div>
+{% else %}
+<div class="card">No walkthroughs yet. Add the tag <code>walkthrough</code> to any post to show it here.</div>
+{% endif %}
