@@ -1,0 +1,14 @@
+---
+layout: default
+title: Blog
+---
+<h1>Blog posts</h1>
+<div class="grid">
+{% for post in site.posts %}
+<article class="card span-12">
+<h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+<div class="meta">{{ post.date | date: "%b %d, %Y" }}</div>
+<p class="excerpt">{{ post.excerpt | strip_html | truncate: 200 }}</p>
+</article>
+{% endfor %}
+</div>
